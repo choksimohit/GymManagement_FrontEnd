@@ -1,11 +1,11 @@
 'use client';
-export const dynamic = 'force-dynamic';
+import { Suspense } from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { api } from '@/lib/api';
-import { MemberMembership, MembershipPlan, Member, PAYMENT_MODE_LABELS } from '@/types';
+import { MemberMembership, MembershipPlan, Member } from '@/types';
 
 interface MembershipForm {
   memberId: number;
@@ -21,7 +21,7 @@ interface PaymentForm {
   referenceNo?: string;
 }
 
-export default function MembershipsPage() {
+function MembershipsContent() {
   const searchParams = useSearchParams();
   const prefilledMemberId = searchParams.get('memberId');
 
@@ -50,8 +50,7 @@ export default function MembershipsPage() {
     try {
       const plan = plans.find(p => p.id === planId);
       if (plan) mForm.setValue('totalAmount', Number(plan.price));
-      const res = await api.post<{ endDate: string }>('/memberships/calculate-end-date', { planId, startDate });
-      console.log('End date:', res.endDate);
+      await api.post<{ endDate: string }>('/memberships/calculate-end-date', { planId, startDate });
     } catch {}
   };
 
@@ -204,5 +203,13 @@ export default function MembershipsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function MembershipsPage() {
+  return (
+    <Suspense fallback={<div className="text-gray-400">Loading...</div>}>
+      <MembershipsContent />
+    </Suspense>
   );
 }

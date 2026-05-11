@@ -64,6 +64,9 @@ export default function MemberForm({ defaultValues, onSubmit, loading }: Props) 
           <div>
             <label className="label">Email</label>
             <input type="email" className="input" {...register('email')} />
+            <p className="text-xs text-blue-500 mt-1">
+              Member will be able to log in to the portal using this email with default password <span className="font-semibold">Gym@123</span>
+            </p>
           </div>
           <div>
             <label className="label">Phone</label>

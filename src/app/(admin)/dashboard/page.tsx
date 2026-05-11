@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
 import { DashboardStats } from '@/types';
+import AttendanceQR from '@/components/AttendanceQR';
 
 function StatCard({ label, value, icon, color }: { label: string; value: number | string; icon: string; color: string }) {
   return (
@@ -38,18 +39,23 @@ export default function DashboardPage() {
         <p className="text-gray-500 text-sm mt-1">Overview of your gym operations</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <StatCard label="Total Members" value={stats.totalMembers} icon="👥" color="bg-blue-100" />
-        <StatCard label="Active Members" value={stats.activeMembers} icon="✅" color="bg-green-100" />
-        <StatCard label="Active Subscriptions" value={stats.activeSubscriptions} icon="🎫" color="bg-purple-100" />
-        <StatCard label="Today's Attendance" value={stats.todayAttendance} icon="📋" color="bg-orange-100" />
-        <StatCard label="Expiring in 7 Days" value={stats.expiringIn7Days} icon="⚠️" color="bg-yellow-100" />
-        <StatCard
-          label="Monthly Revenue"
-          value={`₹${stats.monthlyRevenue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`}
-          icon="💰"
-          color="bg-emerald-100"
-        />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 content-start">
+          <StatCard label="Total Members" value={stats.totalMembers} icon="👥" color="bg-blue-100" />
+          <StatCard label="Active Members" value={stats.activeMembers} icon="✅" color="bg-green-100" />
+          <StatCard label="Active Subscriptions" value={stats.activeSubscriptions} icon="🎫" color="bg-purple-100" />
+          <StatCard label="Today's Attendance" value={stats.todayAttendance} icon="📋" color="bg-orange-100" />
+          <StatCard label="Expiring in 7 Days" value={stats.expiringIn7Days} icon="⚠️" color="bg-yellow-100" />
+          <StatCard
+            label="Monthly Revenue"
+            value={`₹${stats.monthlyRevenue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`}
+            icon="💰"
+            color="bg-emerald-100"
+          />
+        </div>
+        <div>
+          <AttendanceQR />
+        </div>
       </div>
     </div>
   );

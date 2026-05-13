@@ -99,10 +99,10 @@ export default function MemberDetailsPage() {
                         <td className="table-cell">{ms.plan?.name}</td>
                         <td className="table-cell">{ms.startDate?.slice(0, 10)}</td>
                         <td className="table-cell">{ms.endDate?.slice(0, 10)}</td>
-                        <td className="table-cell">₹{Number(ms.totalAmount).toFixed(2)}</td>
-                        <td className="table-cell">₹{paid.toFixed(2)}</td>
+                        <td className="table-cell">£{Number(ms.totalAmount).toFixed(2)}</td>
+                        <td className="table-cell">£{paid.toFixed(2)}</td>
                         <td className="table-cell">
-                          <span className={balance > 0 ? 'badge-red' : 'badge-green'}>₹{balance.toFixed(2)}</span>
+                          <span className={balance > 0 ? 'badge-red' : 'badge-green'}>£{balance.toFixed(2)}</span>
                         </td>
                       </tr>
                     );

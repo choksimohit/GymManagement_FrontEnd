@@ -70,7 +70,7 @@ export default function MemberPortalPage() {
               </dd>
             </div>
             <div><dt className="text-gray-500">Balance</dt>
-              <dd><span className={balance > 0 ? 'badge-red' : 'badge-green'}>₹{balance.toFixed(2)}</span></dd>
+              <dd><span className={balance > 0 ? 'badge-red' : 'badge-green'}>£{balance.toFixed(2)}</span></dd>
             </div>
           </div>
         </div>

@@ -48,7 +48,7 @@ export default function DashboardPage() {
           <StatCard label="Expiring in 7 Days" value={stats.expiringIn7Days} icon="⚠️" color="bg-yellow-100" />
           <StatCard
             label="Monthly Revenue"
-            value={`₹${stats.monthlyRevenue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`}
+            value={`£${stats.monthlyRevenue.toLocaleString('en-GB', { minimumFractionDigits: 2 })}`}
             icon="💰"
             color="bg-emerald-100"
           />

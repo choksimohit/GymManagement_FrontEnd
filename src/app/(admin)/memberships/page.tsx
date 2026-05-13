@@ -106,7 +106,7 @@ function MembershipsContent() {
                 onChange: e => onPlanChange(Number(e.target.value), mForm.getValues('startDate'))
               })}>
                 <option value="">Select plan...</option>
-                {plans.map(p => <option key={p.id} value={p.id}>{p.name} — ₹{Number(p.price).toFixed(2)}</option>)}
+                {plans.map(p => <option key={p.id} value={p.id}>{p.name} — £{Number(p.price).toFixed(2)}</option>)}
               </select>
             </div>
             <div>
@@ -117,7 +117,7 @@ function MembershipsContent() {
               })} />
             </div>
             <div>
-              <label className="label">Total Amount (₹) *</label>
+              <label className="label">Total Amount (£) *</label>
               <input type="number" step="0.01" className="input" {...mForm.register('totalAmount', { required: true, valueAsNumber: true })} />
             </div>
             <div className="md:col-span-2 flex gap-3">
@@ -134,7 +134,7 @@ function MembershipsContent() {
             <h2 className="font-semibold mb-4">Add Payment</h2>
             <form onSubmit={pForm.handleSubmit(onSubmitPayment)} className="space-y-4">
               <div>
-                <label className="label">Amount (₹) *</label>
+                <label className="label">Amount (£) *</label>
                 <input type="number" step="0.01" className="input" {...pForm.register('amount', { required: true, valueAsNumber: true })} />
               </div>
               <div>
@@ -185,9 +185,9 @@ function MembershipsContent() {
                     <td className="table-cell">
                       <span className={expired ? 'badge-red' : 'badge-green'}>{ms.endDate?.slice(0, 10)}</span>
                     </td>
-                    <td className="table-cell">₹{Number(ms.totalAmount).toFixed(2)}</td>
-                    <td className="table-cell">₹{paid.toFixed(2)}</td>
-                    <td className="table-cell"><span className={balance > 0 ? 'badge-red' : 'badge-green'}>₹{balance.toFixed(2)}</span></td>
+                    <td className="table-cell">£{Number(ms.totalAmount).toFixed(2)}</td>
+                    <td className="table-cell">£{paid.toFixed(2)}</td>
+                    <td className="table-cell"><span className={balance > 0 ? 'badge-red' : 'badge-green'}>£{balance.toFixed(2)}</span></td>
                     <td className="table-cell">
                       <div className="flex gap-1">
                         {balance > 0 && <button className="btn-primary text-xs py-1 px-2" onClick={() => setPayingId(ms.id)}>Pay</button>}

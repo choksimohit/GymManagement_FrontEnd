@@ -60,7 +60,7 @@ export default function PlansPage() {
               <input className="input" {...register('name', { required: true })} />
             </div>
             <div>
-              <label className="label">Price (₹) *</label>
+              <label className="label">Price (£) *</label>
               <input type="number" step="0.01" className="input" {...register('price', { required: true, valueAsNumber: true })} />
             </div>
             <div>
@@ -96,7 +96,7 @@ export default function PlansPage() {
                 <p className="text-sm text-gray-500 mt-1">{p.durationValue} {DURATION_UNIT_LABELS[p.durationUnit]}</p>
                 {p.description && <p className="text-xs text-gray-400 mt-1">{p.description}</p>}
               </div>
-              <p className="text-xl font-bold text-blue-600">₹{Number(p.price).toFixed(2)}</p>
+              <p className="text-xl font-bold text-blue-600">£{Number(p.price).toFixed(2)}</p>
             </div>
             <div className="flex gap-2 mt-4">
               <button className="btn-secondary text-xs py-1 px-3" onClick={() => openEdit(p)}>Edit</button>

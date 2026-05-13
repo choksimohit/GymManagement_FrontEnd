@@ -93,9 +93,9 @@ export default function ReportsPage() {
                       <td className="table-cell">{r.planName}</td>
                       <td className="table-cell">{r.startDate?.slice(0, 10)}</td>
                       <td className="table-cell">{r.endDate?.slice(0, 10)}</td>
-                      <td className="table-cell">₹{r.totalAmount.toFixed(2)}</td>
-                      <td className="table-cell">₹{r.paid.toFixed(2)}</td>
-                      <td className="table-cell">₹{r.balance.toFixed(2)}</td>
+                      <td className="table-cell">£{r.totalAmount.toFixed(2)}</td>
+                      <td className="table-cell">£{r.paid.toFixed(2)}</td>
+                      <td className="table-cell">£{r.balance.toFixed(2)}</td>
                       <td className="table-cell"><span className={statusBadge(r.status)}>{r.status}</span></td>
                     </tr>
                   ))}
@@ -121,7 +121,7 @@ export default function ReportsPage() {
               <div className="card mb-6 flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-500">Total Revenue</p>
-                  <p className="text-3xl font-bold text-gray-900">₹{revReport.grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
+                  <p className="text-3xl font-bold text-gray-900">£{revReport.grandTotal.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</p>
                 </div>
                 <p className="text-gray-400 text-sm">{MONTHS[revReport.month - 1]} {revReport.year}</p>
               </div>
@@ -130,13 +130,13 @@ export default function ReportsPage() {
                   <div key={d.date} className="card">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-medium">{d.date}</p>
-                      <p className="font-semibold text-blue-600">₹{d.total.toFixed(2)}</p>
+                      <p className="font-semibold text-blue-600">£{d.total.toFixed(2)}</p>
                     </div>
                     <div className="space-y-1">
                       {(d.payments as { member: string; amount: number; paymentMode: number }[]).map((p, i) => (
                         <div key={i} className="flex items-center justify-between text-sm text-gray-500">
                           <span>{p.member}</span>
-                          <span>₹{p.amount.toFixed(2)}</span>
+                          <span>£{p.amount.toFixed(2)}</span>
                         </div>
                       ))}
                     </div>
